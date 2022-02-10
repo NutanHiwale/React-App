@@ -8,8 +8,6 @@ import {
   CardImg,
 } from "reactstrap";
 
-// import '../CSS/loginPage.css'
-
 
 const ProjectCard = (props) => {
 

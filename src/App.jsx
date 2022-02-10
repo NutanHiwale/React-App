@@ -36,6 +36,7 @@ function App() {
   }
 
   const onSignUpSuccess = () => {
+    setShowLoginPage(true)
     setShowSignUpPage(false)
   }
 
@@ -72,14 +73,7 @@ function App() {
           })}
             </div>
           ) : (<h1>data not available</h1>)}
-           {/* {users.data.map((user) => {
-            return (<ProjectCard
-              img_url={user.avatar}
-              name={user.first_name}
-              description={user.last_name}
-              img_alt_text={user.first_name}
-            />)
-          })}   */}
+           
         {/* <h1>Project Page</h1> */}
         </div>)
       }

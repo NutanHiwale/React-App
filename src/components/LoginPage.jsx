@@ -20,7 +20,7 @@ const LoginPage = ({onLoginSuccess}) =>{
     }
     if (!password){
       flag = false
-      alert("Email Can't be empty")
+      alert("Password Can't be empty")
     }
     console.log("inside uponSubmit");
      console.log(onLoginSuccess)

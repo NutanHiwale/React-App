@@ -1,4 +1,5 @@
 import React, { useReducer } from "react";
+import { Button } from "reactstrap";
 //  import yup from "yup";
 import * as yup from "yup";
 
@@ -69,24 +70,18 @@ const reducer = (state, action) => {
 
 // -----------------------------------------------------------------------
 
+ const clearEmailField = () => {};
 // -----------------------------------------------------------------------
 
-// -----------------------------------------------------------------------
 
-const clearEmailField = () => {};
-// -----------------------------------------------------------------------
-
-// -----------------------------------------------------------------------
-
-// -----------------------------------------------------------------------
-
-const SignUp = ({ onSignUpSuccess }) => {
+const SignUp = ({ onSignUpSuccess ,setShowLoginPage }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
   const { email, password, firstName, lastName } = state;
 
   const onSignUp = (e) => {
    
     console.log(e.target.email.value);
+    console.log(e.target.password.value);
 
     let schema = yup.object().shape({
       firstName: yup.string().email(),
@@ -107,13 +102,33 @@ const SignUp = ({ onSignUpSuccess }) => {
       });
   };
 
+
+    // function uponSignUp(e){
+    //   e.preventDefault()
+    //   let flag = true 
+    //   if (!email){
+    //     flag = false
+    //     alert("Email Can't be empty")
+    //   }
+    //   if(!password){
+    //     flag = false 
+    //     alert("Password Can't be empty")
+    //   }
+    //   console.log("inside uponSubmit");
+    //   console.log(onSignUpSuccess)
+    //   if (flag){
+    //     onSignUpSuccess()
+    //   }
+    // }
+
+
   return (
     <>
-      {/* e.preventDefault(); */}
       <form
         onSubmit={(e) => {
           e.preventDefault();
           onSignUp(e);
+          onSignUpSuccess()
         }}
       >
         <h3>Sign Up</h3>
@@ -145,13 +160,15 @@ const SignUp = ({ onSignUpSuccess }) => {
             type="password"
             className="form-control"
             placeholder="Enter password"
+            id="password"
           />
         </div>
         <button type="submit" className="btn btn-primary btn-block">
           Sign Up
         </button>
         <p className="forgot-password text-right">
-          Already registered?<a href="#">Sign In</a>
+          Already registered?
+          <Button onClick={ ()=>{ onSignUpSuccess() }}>Sign In</Button>
         </p>
       </form>
     </>
